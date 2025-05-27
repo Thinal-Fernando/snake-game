@@ -1,7 +1,7 @@
 const board = document.querySelector('#game-board')
 const instructionText = document.querySelector('#instructions')
 const logo = document.querySelector('#logo')
-
+const score = document.querySelector('#score')
 
 const gridSize = 20
 let snake = [{ x: 10, y: 10 }]
@@ -15,6 +15,7 @@ function draw() {
     board.innerHTML = '';
     drawSnake();
     drawfood();
+    updateScore();
 }
 
 
@@ -71,6 +72,7 @@ function move() {
 
     if (head.x === food.x && head.y === food.y) {
         food = generateFood();
+        increaseSpeed();
         clearInterval(gameInterval);
         gameInterval = setInterval(() => {
             move()
@@ -141,4 +143,17 @@ function checkCollision() {
             resetGame();
         }
     }
-}   
+}
+
+function resetGame() {
+    snake = [{ x: 10, y: 10 }];
+    food = generateFood()
+    direction = 'right'
+    gameSpeed = 200
+    updateScore()
+}
+
+function updateScore() {
+    const currentScore = snake.length - 1;
+    score.textContent = currentScore.toString().padStart(3, '0')
+}
