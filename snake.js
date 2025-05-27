@@ -11,7 +11,8 @@ let direction = 'right'
 let gameInterval;
 let gameSpeed = 200
 let gameStarted = false
-let highScore = 0;
+let highScore = Number(localStorage.getItem('gameHighScore')) || 0;
+highScoreElement.textContent = highScore.toString().padStart(3, '0');
 
 
 function draw() {
@@ -176,7 +177,7 @@ function updateHighScore() {
     const currentScore = snake.length - 1
     if (currentScore > highScore) {
         highScore = currentScore
+        localStorage.setItem('gameHighScore', highScore)
         highScoreElement.textContent = highScore.toString().padStart(3, '0')
     }
-    highScoreElement.style.display = 'block'
 }
