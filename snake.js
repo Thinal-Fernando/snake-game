@@ -105,18 +105,23 @@ function keyPressListener(event) {
     if ((!gameStarted && event.code === 'Space') || (gameStarted && event.key === ' ')) {
         startGame();
     } else {
-        switch (event.key) {
-            case 'ArrowUp':
-                direction = 'up';
+        const key = event.key.toLowerCase()
+        switch (key) {
+            case 'arrowup':
+            case 'w':
+                if (direction !== 'down') direction = 'up';
                 break
-            case 'ArrowDown':
-                direction = 'down';
+            case 'arrowdown':
+            case 's':
+                if (direction !== 'up') direction = 'down';
                 break
-            case 'ArrowLeft':
-                direction = 'left';
+            case 'arrowleft':
+            case 'a':
+                if (direction !== 'right') direction = 'left';
                 break
-            case 'ArrowRight':
-                direction = 'right';
+            case 'arrowright':
+            case 'd':
+                if (direction !== 'left') direction = 'right';
                 break
 
         }
