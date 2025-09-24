@@ -52,6 +52,9 @@ Move the snake around the board, eat food to grow longer, and try to beat your h
   <img src="screenshots/snake-demo.gif" alt="Game Demo" />
 </p>
 
+Check out the live Snake Game here: [Play Snake Game](https://thinal-fernando.github.io/snake-game/)
+
+
 <br>
 
 ---
